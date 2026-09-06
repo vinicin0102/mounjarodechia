@@ -17,9 +17,13 @@
      thumb      miniatura à esquerda + texto     (1 coluna)
      thumb-top  miniatura em cima + texto        (2 colunas)
 
-   Imagens: enquanto `img` for null, o funil desenha um placeholder em SVG
-   e funciona normalmente. Para usar suas fotos, troque por um caminho:
-     img: 'assets/img/genero-mulher.webp'
+   Imagens: os caminhos abaixo JÁ ESTÃO LIGADOS, mesmo que os arquivos ainda
+   não existam. Enquanto o arquivo não estiver lá, o funil desenha um
+   placeholder em SVG (`ph`) e funciona normalmente. Basta salvar a sua foto
+   em assets/img/ com o nome esperado para ela entrar no ar — nenhum código
+   precisa ser editado. Veja a lista completa em assets/img/README.md.
+
+   `{{g}}` no caminho vira 'f' ou 'm' conforme o gênero respondido.
 
    Tokens disponíveis em qualquer texto:
      {{marca}} {{nome}} {{delta}} {{area}} {{corpo}} {{faixa}}
@@ -53,8 +57,8 @@ const FUNNEL = [
     layout: 'image',
     cols: 2,
     options: [
-      { value: 'f', title: 'Mulher', img: null, ph: 'genero-f' },
-      { value: 'm', title: 'Homem',  img: null, ph: 'genero-m' },
+      { value: 'f', title: 'Mulher', img: 'assets/img/quiz/genero-mulher.webp', ph: 'genero-f' },
+      { value: 'm', title: 'Homem',  img: 'assets/img/quiz/genero-homem.webp',  ph: 'genero-m' },
     ],
   },
 
@@ -93,14 +97,14 @@ const FUNNEL = [
     cols: 1,
     optionsBy: {
       f: [
-        { title: 'Regular',   subtitle: 'Peso normal',     img: null, ph: 'corpo-f-1' },
-        { title: 'Flácido',   subtitle: 'Pouca firmeza',   img: null, ph: 'corpo-f-2' },
-        { title: 'Sobrepeso', subtitle: 'Gordura visível', img: null, ph: 'corpo-f-3' },
+        { title: 'Regular',   subtitle: 'Peso normal',     img: 'assets/img/quiz/corpo-f-regular.webp',   ph: 'corpo-f-1' },
+        { title: 'Flácido',   subtitle: 'Pouca firmeza',   img: 'assets/img/quiz/corpo-f-flacido.webp',   ph: 'corpo-f-2' },
+        { title: 'Sobrepeso', subtitle: 'Gordura visível', img: 'assets/img/quiz/corpo-f-sobrepeso.webp', ph: 'corpo-f-3' },
       ],
       m: [
-        { title: 'Regular',   subtitle: 'Peso normal',     img: null, ph: 'corpo-m-1' },
-        { title: 'Flácido',   subtitle: 'Pouca firmeza',   img: null, ph: 'corpo-m-2' },
-        { title: 'Sobrepeso', subtitle: 'Gordura visível', img: null, ph: 'corpo-m-3' },
+        { title: 'Regular',   subtitle: 'Peso normal',     img: 'assets/img/quiz/corpo-m-regular.webp',   ph: 'corpo-m-1' },
+        { title: 'Flácido',   subtitle: 'Pouca firmeza',   img: 'assets/img/quiz/corpo-m-flacido.webp',   ph: 'corpo-m-2' },
+        { title: 'Sobrepeso', subtitle: 'Gordura visível', img: 'assets/img/quiz/corpo-m-sobrepeso.webp', ph: 'corpo-m-3' },
       ],
     },
   },
@@ -119,12 +123,23 @@ const FUNNEL = [
     layout: 'thumb-top',
     cols: 2,
     cta: 'CONTINUAR',
-    options: [
-      { title: 'Abdômen', img: null, ph: 'area-abdomen' },
-      { title: 'Peito',   img: null, ph: 'area-peito' },
-      { title: 'Flancos', img: null, ph: 'area-flancos' },
-      { title: 'Braços',  img: null, ph: 'area-bracos' },
-    ],
+    /* Gendered porque as fotos de corpo são diferentes; os títulos são os
+       mesmos nos dois lados de propósito — a resposta salva é o título, e
+       mudá-lo por gênero quebraria o token {{area}}. */
+    optionsBy: {
+      f: [
+        { title: 'Abdômen', img: 'assets/img/quiz/area-f-abdomen.webp', ph: 'area-abdomen' },
+        { title: 'Peito',   img: 'assets/img/quiz/area-f-peito.webp',   ph: 'area-peito' },
+        { title: 'Flancos', img: 'assets/img/quiz/area-f-flancos.webp', ph: 'area-flancos' },
+        { title: 'Braços',  img: 'assets/img/quiz/area-f-bracos.webp',  ph: 'area-bracos' },
+      ],
+      m: [
+        { title: 'Abdômen', img: 'assets/img/quiz/area-m-abdomen.webp', ph: 'area-abdomen' },
+        { title: 'Peito',   img: 'assets/img/quiz/area-m-peito.webp',   ph: 'area-peito' },
+        { title: 'Flancos', img: 'assets/img/quiz/area-m-flancos.webp', ph: 'area-flancos' },
+        { title: 'Braços',  img: 'assets/img/quiz/area-m-bracos.webp',  ph: 'area-bracos' },
+      ],
+    },
   },
 
   /* 5 ------------------------------------------------------------------- */
@@ -333,7 +348,12 @@ const FUNNEL = [
     seconds: 8,
     title: 'Montando seu protocolo...',
     subtitle: '🧪 O sistema está analisando o seu perfil, {{nome}}...',
-    carousel: ['ingredientes', 'preparo', 'rotina', 'resultado'],
+    carousel: [
+      { img: 'assets/img/analise/carrossel-1.webp', ph: 'ingredientes' },
+      { img: 'assets/img/analise/carrossel-2.webp', ph: 'preparo' },
+      { img: 'assets/img/analise/carrossel-3.webp', ph: 'rotina' },
+      { img: 'assets/img/analise/carrossel-4.webp', ph: 'resultado' },
+    ],
     checks: [
       'Seu IMC é {{imc}}',
       'Ajustando a dosagem para {{pesoAtual}} kg',
@@ -353,7 +373,13 @@ const FUNNEL = [
     subtitle: 'De <strong>{{pesoAtual}} kg</strong> para <strong>{{peso30}} kg</strong> — <span class="accent-u">{{perda30}} quilos a menos</span> no primeiro mês.',
     antesLabel: 'Hoje',
     depoisLabel: 'Em 30 dias',
-    imagens:   { antes: null, depois: null },
+    /* Sem estes arquivos, a reserva é a silhueta desenhada a partir do IMC
+       real — por isso ela encolhe proporcionalmente ao resultado projetado.
+       Ao colocar fotos aqui, elas passam a ser as mesmas para todo mundo. */
+    imagens: {
+      antes:  'assets/img/projecao/antes-{{g}}.webp',
+      depois: 'assets/img/projecao/depois-{{g}}.webp',
+    },
     nota: 'Projeção estimada com base nas suas respostas. Resultados variam de pessoa para pessoa.',
     cta:       'Sim, eu quero ter esse resultado',
     ctaSub:    'Protocolo personalizado de {{delta}} kg',

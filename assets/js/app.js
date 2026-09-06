@@ -134,6 +134,8 @@ function derivados() {
 
   return {
     marca: CFG.marca,
+    // `g` existe para caminhos de imagem: 'antes-{{g}}.webp' vira 'antes-f.webp'.
+    g: state.genero,
     nome: state.nome || 'você',
     delta, imc, perda30,
     pesoAtual: pesoAtual || '—',
@@ -264,21 +266,29 @@ function comUtms(url) {
 
 /* ------------------------------------------------------------------ MÍDIA */
 
-/* Devolve <img> se houver foto configurada, senão o placeholder em SVG.
-   O onerror cai no placeholder: um caminho errado não deixa buraco na tela. */
+/* Devolve <img> se houver foto configurada, senão o desenho de reserva.
+
+   Os caminhos em funnel.js já apontam para os arquivos esperados em
+   assets/img/, mesmo que eles ainda não existam: o onerror cai no
+   placeholder. Na prática isso significa que colocar a foto na pasta com o
+   nome certo já a coloca no ar, sem editar código, e que um arquivo faltando
+   nunca deixa um buraco branco na tela.
+
+   A reserva é `opt.svg` (SVG já pronto) ou `opt.ph` (chave do PH). */
 function figura(opt, cls) {
   const box = el('div', cls || 'opt__figure');
-  const ph  = opt.ph && PH[opt.ph] ? PH[opt.ph]() : '';
+  const reserva = opt.svg || (opt.ph && PH[opt.ph] ? PH[opt.ph]() : '');
+
   if (opt.img) {
     const img = el('img');
-    img.src = opt.img;
+    img.src = tk(opt.img);          // aceita {{g}} para variar por gênero
     img.alt = opt.title || '';
     img.loading = 'lazy';
     img.decoding = 'async';
-    img.onerror = () => { box.innerHTML = ph; };
+    img.onerror = () => { box.innerHTML = reserva; };
     box.appendChild(img);
   } else {
-    box.innerHTML = ph;
+    box.innerHTML = reserva;
   }
   return box;
 }
@@ -630,9 +640,11 @@ function renderLoading(etapa, box) {
   let itens = [];
   if (etapa.carousel && etapa.carousel.length) {
     const car = el('div', 'carousel');
-    etapa.carousel.forEach((chave, i) => {
+    etapa.carousel.forEach((quadro, i) => {
       const item = el('div', 'carousel__item' + (i === 0 ? ' is-active' : ''));
-      item.innerHTML = PH[chave] ? PH[chave]() : '';
+      // Aceita { img, ph } ou só a chave do placeholder, como string.
+      const cfg = typeof quadro === 'string' ? { ph: quadro } : quadro;
+      item.appendChild(figura(cfg, 'carousel__figure'));
       car.appendChild(item);
       itens.push(item);
     });
@@ -821,15 +833,9 @@ function renderProjection(etapa, box) {
   ].forEach(c => {
     const card = el('div', 'compare__card');
     card.appendChild(el('div', 'compare__label compare__label--' + c.cls, tk(c.lbl)));
-
-    if (c.img) {
-      card.appendChild(figura({ img: c.img, ph: c.ph, title: c.lbl }, 'compare__figure'));
-    } else {
-      const fig = el('div', 'compare__figure');
-      fig.innerHTML = c.svg;
-      card.appendChild(fig);
-    }
-
+    // Sem a foto, a reserva é a silhueta calculada pelo IMC — não o desenho
+    // fixo, que mostraria a mesma transformação para qualquer resultado.
+    card.appendChild(figura({ img: c.img, svg: c.svg, title: c.lbl }, 'compare__figure'));
     card.appendChild(el('div', 'compare__weight', c.peso + ' kg'));
     comp.appendChild(card);
   });

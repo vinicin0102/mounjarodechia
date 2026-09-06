@@ -123,15 +123,35 @@ percentual nenhum.
 
 ## Imagens
 
-O funil roda inteiro **sem nenhuma foto**: `assets/js/placeholders.js` desenha
-silhuetas em SVG no lugar. Para usar as suas, coloque o arquivo em
-`assets/img/` e aponte o campo `img`:
+**Não é preciso editar código para trocar as imagens.** Os caminhos já estão
+ligados: salve o arquivo em `assets/img/` com o nome esperado e ele entra no
+ar. Enquanto o arquivo não existir, o funil desenha um placeholder em SVG
+(`assets/js/placeholders.js`), então nunca fica um buraco branco na tela e dá
+para subir as fotos aos poucos.
 
-```js
-{ title: 'Mulher', img: 'assets/img/genero-mulher.webp', ph: 'genero-f' }
+**A lista completa de nomes, proporções e tamanhos está em
+[`assets/img/README.md`](assets/img/README.md).** Resumo das pastas:
+
+```
+assets/img/quiz/       cartões das perguntas (gênero, tipo de corpo, áreas)
+assets/img/analise/    carrossel da tela "Montando seu protocolo"
+assets/img/projecao/   antes e depois
+assets/img/oferta/     mockups dos planos
 ```
 
-Deixe o `ph`: ele volta a ser usado se a imagem falhar em carregar.
+Formato: `.webp`, qualidade 80–85, até ~150 KB por arquivo. O funil vive de
+tráfego pago no celular, e peso de imagem derruba conversão direto.
+
+Duas observações que valem antes de trocar:
+
+- **Miniaturas de tipo de corpo** aparecem em 64 px, lado a lado. Se as três
+  não forem distinguíveis nesse tamanho, a etapa perde a função — use a mesma
+  pose e o mesmo fundo nas três, mudando só o corpo.
+- **Antes/depois da projeção** é o único lugar onde a foto piora o funil por
+  padrão: sem ela, a silhueta é calculada a partir do IMC real e encolhe na
+  proporção do resultado projetado. Com foto fixa, quem vai perder 3 kg vê a
+  mesma transformação de quem vai perder 20 — e é esse descolamento entre
+  imagem e número que gera reembolso.
 
 A logo do topo é `assets/img/logo.svg`, uma reconstrução vetorial do criativo.
 Para usar o arquivo original, salve como `assets/img/logo.webp` e troque o
@@ -178,7 +198,7 @@ assets/js/config.js         ← preços, checkout, pixel, vídeo    (você edita
 assets/js/funnel.js         ← as 21 etapas e seus textos        (você edita)
 assets/js/placeholders.js   silhuetas SVG enquanto não há fotos
 assets/js/app.js            motor: rotas, estado, render, rastreio
-assets/img/                 logo e favicon
+assets/img/                 ← suas imagens (veja o README de lá)
 ```
 
 ## Eventos disparados

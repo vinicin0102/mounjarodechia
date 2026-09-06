@@ -337,6 +337,7 @@ input,textarea{user-select:text}
   transition:opacity .6s var(--ease);
 }
 .carousel__item.is-active{opacity:1}
+.carousel__figure{width:100%;height:100%}
 .carousel__item img,.carousel__item svg{width:100%;height:100%;object-fit:cover}
 
 /* -------------------------------------------------------------- MEDIDA */

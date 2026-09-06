@@ -57,8 +57,8 @@ const CONFIG = {
     {
       id:       'completo',
       nome:     'PLANO COMPLETO',
-      imagem:   null,                     // ← 'assets/img/oferta-completo.webp'
-      ph:       'oferta-completo',
+      imagem:   'assets/img/oferta/oferta-completo.webp',
+      ph:       'oferta-completo',        // reserva enquanto o arquivo não existe
       de:       'R$ 97,00',
       por:      'R$ 47,00',
       parcela:  'ou 12x no cartão • Pix aprovado na hora',
@@ -77,8 +77,8 @@ const CONFIG = {
     {
       id:       'premium',
       nome:     'PLANO PREMIUM',
-      imagem:   null,                     // ← 'assets/img/oferta-premium.webp'
-      ph:       'oferta-premium',
+      imagem:   'assets/img/oferta/oferta-premium.webp',
+      ph:       'oferta-premium',         // reserva enquanto o arquivo não existe
       de:       'R$ 197,00',
       por:      'R$ 97,00',
       parcela:  'ou 12x no cartão • Pix aprovado na hora',
