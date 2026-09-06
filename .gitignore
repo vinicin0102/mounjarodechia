@@ -1,0 +1,24 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Node (o projeto não usa, mas ferramentas locais criam)
+node_modules/
+package-lock.json
+
+# Deploy
+.vercel/
+.netlify/
+
+# Criativos e fontes de mídia pesados: use o repositório só para o site.
+# Se for versionar as fotos finais em assets/img/, remova estas linhas.
+*.psd
+*.ai
+*.mp4
+*.mov

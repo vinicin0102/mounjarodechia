@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 84" width="340" height="84"
+     role="img" aria-label="Mounjaro de Chia">
+  <title>Mounjaro de Chia</title>
+
+  <!-- Reconstrução vetorial da logo da criativo. Para usar o arquivo
+       original, salve como assets/img/logo.webp e troque o src no
+       index.html (e o preload logo acima dele). -->
+
+  <defs>
+    <linearGradient id="verde" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1E8F3E"/>
+      <stop offset="100%" stop-color="#14682C"/>
+    </linearGradient>
+    <linearGradient id="amarelo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#FFE04B"/>
+      <stop offset="100%" stop-color="#F5C400"/>
+    </linearGradient>
+  </defs>
+
+  <!-- linha 1: MOUNJARO em placa verde -->
+  <rect x="2" y="4" width="336" height="42" rx="8" fill="url(#verde)"/>
+  <rect x="2" y="4" width="336" height="42" rx="8" fill="none"
+        stroke="#0E4A1E" stroke-width="3"/>
+  <text x="170" y="35" text-anchor="middle"
+        font-family="Poppins, 'Arial Black', Arial, sans-serif"
+        font-size="30" font-weight="800" letter-spacing="1.5"
+        fill="#FFFFFF">MOUNJARO</text>
+
+  <!-- linha 2: DE + selo CHIA -->
+  <text x="92" y="76" text-anchor="end"
+        font-family="Poppins, 'Arial Black', Arial, sans-serif"
+        font-size="26" font-weight="800" letter-spacing="1"
+        fill="#14682C">DE</text>
+
+  <rect x="102" y="52" width="136" height="30" rx="6" fill="url(#amarelo)"/>
+  <rect x="102" y="52" width="136" height="30" rx="6" fill="none"
+        stroke="#C79A00" stroke-width="2"/>
+  <text x="170" y="75" text-anchor="middle"
+        font-family="Poppins, 'Arial Black', Arial, sans-serif"
+        font-size="24" font-weight="800" letter-spacing="2"
+        fill="#153D1C">CHIA</text>
+</svg>

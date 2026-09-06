@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"
+     role="img" aria-label="Mounjaro de Chia">
+  <title>Mounjaro de Chia</title>
+  <rect width="64" height="64" rx="14" fill="#14682C"/>
+
+  <!-- copo com a bebida de chia -->
+  <path d="M22 14 L42 14 L39 46 C38.6 49 36.2 51 33.4 51 L30.6 51
+           C27.8 51 25.4 49 25 46 Z"
+        fill="#FFFFFF" opacity=".95"/>
+  <path d="M25.6 30 L38.4 30 L36.6 46 C36.3 48.4 34.6 50 32.6 50 L31.4 50
+           C29.4 50 27.7 48.4 27.4 46 Z"
+        fill="#F5C400"/>
+  <g fill="#153D1C">
+    <circle cx="30" cy="36" r="1.9"/>
+    <circle cx="35" cy="34" r="1.9"/>
+    <circle cx="32" cy="42" r="1.9"/>
+    <circle cx="36" cy="44" r="1.9"/>
+  </g>
+</svg>

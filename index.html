@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F6F9F8">
+<meta name="format-detection" content="telephone=no">
+
+<title>Mounjaro de Chia — Protocolo Personalizado</title>
+<meta name="description" content="Avaliação gratuita de 1 minuto para receber seu Protocolo Personalizado do Mounjaro de Chia.">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/favicon.svg">
+
+<!-- A logo é a primeira coisa visível: pré-carrega para não piscar. -->
+<link rel="preload" href="assets/img/logo.svg" as="image" fetchpriority="high">
+
+<link rel="stylesheet" href="assets/css/style.css?v=1">
+</head>
+<body>
+
+<!-- Cabeçalho: logo + barra de progresso. O app.js controla a visibilidade. -->
+<header class="topbar" id="topbar">
+  <div class="topbar__row">
+    <button class="topbar__back" id="btn-back" type="button" aria-label="Voltar">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <img class="topbar__logo" id="topbar-logo" src="assets/img/logo.svg"
+         alt="Mounjaro de Chia" width="150" height="34">
+    <span class="topbar__spacer" aria-hidden="true"></span>
+  </div>
+
+  <div class="progress" id="progress" hidden>
+    <div class="progress__meta">
+      <span id="progress-label">Etapa 1 de 16</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress__track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+         aria-valuenow="0" id="progress-bar">
+      <div class="progress__fill" id="progress-fill"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Todas as etapas são renderizadas aqui pelo app.js. -->
+<main id="app" class="app" aria-live="polite"></main>
+
+<!-- Barra de ação fixa no rodapé (CONTINUAR, CTAs). Preenchida por etapa. -->
+<div class="actionbar" id="actionbar" hidden></div>
+
+<script src="assets/js/config.js?v=1"></script>
+<script src="assets/js/funnel.js?v=1"></script>
+<script src="assets/js/placeholders.js?v=1"></script>
+<script src="assets/js/app.js?v=1"></script>
+</body>
+</html>
